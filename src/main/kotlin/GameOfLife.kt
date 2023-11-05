@@ -5,7 +5,7 @@ class GameOfLife(
     private val initialGrid: Array<Array<Cell>>,
     private val gridService: GridService = GridService()
 ) {
-    fun nextGeneration(cell: Cell, aliveNeighborsCount: Int): Cell? =
+    fun generateNextCell(cell: Cell, aliveNeighborsCount: Int): Cell? =
         when {
             cell == Cell(ALIVE) && aliveNeighborsCount == 0 -> Cell(DEAD)
             cell == Cell(ALIVE) && aliveNeighborsCount == 1 -> Cell(DEAD)
@@ -22,7 +22,7 @@ class GameOfLife(
 
     fun generateNextGrid(): Array<Array<Cell>> {
         val aliveNeighborsCount = gridService.getAliveNeighborsCount(initialGrid)
-        val nextCell = nextGeneration(cell = initialGrid[1][1], aliveNeighborsCount = aliveNeighborsCount)
+        val nextCell = generateNextCell(cell = initialGrid[1][1], aliveNeighborsCount = aliveNeighborsCount)
         return arrayOf(
             arrayOf(Cell(DEAD), Cell(DEAD), Cell(DEAD)),
             arrayOf(Cell(DEAD), nextCell ?: Cell(DEAD), Cell(DEAD)),

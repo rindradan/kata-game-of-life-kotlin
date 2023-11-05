@@ -10,7 +10,7 @@ class GameOfLifeTest {
         val cell = Cell(ALIVE)
         val game = GameOfLife(initialGrid = emptyArray())
         // WHEN
-        val nextCell = game.nextGeneration(cell, 0)
+        val nextCell = game.generateNextCell(cell, 0)
         // THEN
         nextCell shouldBe Cell(DEAD)
     }
@@ -21,7 +21,7 @@ class GameOfLifeTest {
         val cell = Cell(ALIVE)
         val game = GameOfLife(initialGrid = emptyArray())
         // WHEN
-        val nextCell = game.nextGeneration(cell, 1)
+        val nextCell = game.generateNextCell(cell, 1)
         // THEN
         nextCell shouldBe Cell(DEAD)
     }
@@ -32,7 +32,7 @@ class GameOfLifeTest {
         val cell = Cell(ALIVE)
         val game = GameOfLife(initialGrid = emptyArray())
         // WHEN
-        val nextCell = game.nextGeneration(cell, 2)
+        val nextCell = game.generateNextCell(cell, 2)
         // THEN
         nextCell shouldBe Cell(ALIVE)
     }
@@ -43,7 +43,7 @@ class GameOfLifeTest {
         val cell = Cell(ALIVE)
         val game = GameOfLife(initialGrid = emptyArray())
         // WHEN
-        val nextCell = game.nextGeneration(cell, 3)
+        val nextCell = game.generateNextCell(cell, 3)
         // THEN
         nextCell shouldBe Cell(ALIVE)
     }
@@ -54,7 +54,7 @@ class GameOfLifeTest {
         val cell = Cell(ALIVE)
         val game = GameOfLife(initialGrid = emptyArray())
         // WHEN
-        val nextCell = game.nextGeneration(cell, 4)
+        val nextCell = game.generateNextCell(cell, 4)
         // THEN
         nextCell shouldBe Cell(DEAD)
     }
@@ -65,7 +65,7 @@ class GameOfLifeTest {
         val cell = Cell(ALIVE)
         val game = GameOfLife(initialGrid = emptyArray())
         // WHEN
-        val nextCell = game.nextGeneration(cell, 5)
+        val nextCell = game.generateNextCell(cell, 5)
         // THEN
         nextCell shouldBe Cell(DEAD)
     }
@@ -76,7 +76,7 @@ class GameOfLifeTest {
         val cell = Cell(ALIVE)
         val game = GameOfLife(initialGrid = emptyArray())
         // WHEN
-        val nextCell = game.nextGeneration(cell, 6)
+        val nextCell = game.generateNextCell(cell, 6)
         // THEN
         nextCell shouldBe Cell(DEAD)
     }
@@ -87,7 +87,7 @@ class GameOfLifeTest {
         val cell = Cell(ALIVE)
         val game = GameOfLife(initialGrid = emptyArray())
         // WHEN
-        val nextCell = game.nextGeneration(cell, 7)
+        val nextCell = game.generateNextCell(cell, 7)
         // THEN
         nextCell shouldBe Cell(DEAD)
     }
@@ -98,7 +98,7 @@ class GameOfLifeTest {
         val cell = Cell(ALIVE)
         val game = GameOfLife(initialGrid = emptyArray())
         // WHEN
-        val nextCell = game.nextGeneration(cell, 8)
+        val nextCell = game.generateNextCell(cell, 8)
         // THEN
         nextCell shouldBe Cell(DEAD)
     }
@@ -109,7 +109,7 @@ class GameOfLifeTest {
         val cell = Cell(DEAD)
         val game = GameOfLife(initialGrid = emptyArray())
         // WHEN
-        val nextCell = game.nextGeneration(cell, 3)
+        val nextCell = game.generateNextCell(cell, 3)
         // THEN
         nextCell shouldBe Cell(ALIVE)
     }
