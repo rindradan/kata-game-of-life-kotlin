@@ -1,6 +1,6 @@
 import CellStatus.ALIVE
 
-class GridService {
+class CellNeighborService {
     fun getAliveNeighborsCount(grid: Array<Array<Cell>>): Int {
         var count = 0
         for (rowIndex in grid.indices) {

@@ -3,7 +3,7 @@ import CellStatus.DEAD
 
 class GameOfLife(
     private val initialGrid: Array<Array<Cell>>,
-    private val gridService: GridService = GridService()
+    private val cellNeighborService: CellNeighborService = CellNeighborService()
 ) {
     fun generateNextCell(cell: Cell, aliveNeighborsCount: Int): Cell =
         when {
@@ -13,7 +13,7 @@ class GameOfLife(
         }
 
     fun generateNextGrid(): Array<Array<Cell>> {
-        val aliveNeighborsCount = gridService.getAliveNeighborsCount(initialGrid)
+        val aliveNeighborsCount = cellNeighborService.getAliveNeighborsCount(initialGrid)
         val nextCell = generateNextCell(cell = initialGrid[1][1], aliveNeighborsCount = aliveNeighborsCount)
         return arrayOf(
             arrayOf(Cell(DEAD), Cell(DEAD), Cell(DEAD)),
