@@ -29,11 +29,11 @@ class GameOfLife(
         )
     }
 
-    private fun getAliveNeighborsCount(initialGrid: Array<Array<Cell>>): Int =
+    fun getAliveNeighborsCount(grid: Array<Array<Cell>>): Int =
         when {
-            initialGrid[0][0].status == ALIVE && initialGrid[2][1].status == ALIVE -> 2
-            initialGrid[0][1].status == ALIVE && initialGrid[2][1].status == ALIVE -> 2
-            initialGrid[0][1].status == ALIVE -> 1
+            grid[0][0].status == ALIVE && grid[2][1].status == ALIVE -> 2
+            grid[0][1].status == ALIVE && grid[2][1].status == ALIVE -> 2
+            grid[0][1].status == ALIVE -> 1
             else -> 0
         }
 }
