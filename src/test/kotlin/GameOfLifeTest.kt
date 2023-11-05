@@ -113,4 +113,23 @@ class GameOfLifeTest {
         // THEN
         nextCell shouldBe Cell(ALIVE)
     }
+
+    @Test
+    fun `on a grid (3,3), an alive cell on point (1,1) with no neighbors should be dead`() {
+        // GIVEN
+        val grid : Array<Array<Cell>> = arrayOf(
+            arrayOf(Cell(DEAD), Cell(DEAD), Cell(DEAD)),
+            arrayOf(Cell(DEAD), Cell(ALIVE), Cell(DEAD)),
+            arrayOf(Cell(DEAD), Cell(DEAD), Cell(DEAD)),
+        )
+        val game = GameOfLife(initialGrid = grid)
+        // WHEN
+        val nextGrid = game.generateNextGrid()
+        // THEN
+        nextGrid shouldBe arrayOf(
+            arrayOf(Cell(DEAD), Cell(DEAD), Cell(DEAD)),
+            arrayOf(Cell(DEAD), Cell(DEAD), Cell(DEAD)),
+            arrayOf(Cell(DEAD), Cell(DEAD), Cell(DEAD)),
+        )
+    }
 }
