@@ -1,3 +1,3 @@
 data class Cell(
-    val status: CellStatus
+    private val status: CellStatus
 )

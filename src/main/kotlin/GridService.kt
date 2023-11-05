@@ -5,7 +5,7 @@ class GridService {
         var count = 0
         for (rowIndex in grid.indices) {
             for (columnIndex in grid[rowIndex].indices) {
-                if (!isCellInTheMiddle(rowIndex, columnIndex) && grid[rowIndex][columnIndex].status == ALIVE) count++
+                if (!isCellInTheMiddle(rowIndex, columnIndex) && grid[rowIndex][columnIndex] == Cell(ALIVE)) count++
             }
         }
         return count
