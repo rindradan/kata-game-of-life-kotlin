@@ -13,8 +13,14 @@ class GameOfLife(
         }
 
     fun generateNextGrid(): Array<Array<Cell>> {
-        val aliveNeighborsCount = cellNeighborService.getAliveNeighborsCount(initialGrid)
-        val nextCell = generateNextCell(cell = initialGrid[1][1], aliveNeighborsCount = aliveNeighborsCount)
+        val cellRowIndex = 1
+        val cellColumnIndex = 1
+        val aliveNeighborsCount = cellNeighborService.getAliveNeighborsCount(
+            grid = initialGrid,
+            targetCellRowIndex = cellRowIndex,
+            targetCellColumnIndex = cellColumnIndex,
+        )
+        val nextCell = generateNextCell(cell = initialGrid[cellRowIndex][cellColumnIndex], aliveNeighborsCount = aliveNeighborsCount)
         return arrayOf(
             arrayOf(Cell(DEAD), Cell(DEAD), Cell(DEAD)),
             arrayOf(Cell(DEAD), nextCell, Cell(DEAD)),

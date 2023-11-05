@@ -1,7 +1,6 @@
 import CellStatus.ALIVE
 import CellStatus.DEAD
 import io.kotest.matchers.shouldBe
-import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 
 class CellNeighborServiceTest {
@@ -16,7 +15,8 @@ class CellNeighborServiceTest {
         )
         val cellNeighborService = CellNeighborService()
         // WHEN
-        val aliveNeighborsCount = cellNeighborService.getAliveNeighborsCount(grid)
+        val aliveNeighborsCount =
+            cellNeighborService.getAliveNeighborsCount(grid = grid, targetCellRowIndex = 1, targetCellColumnIndex = 1)
         // THEN
         aliveNeighborsCount shouldBe 0
     }
@@ -31,7 +31,8 @@ class CellNeighborServiceTest {
         )
         val cellNeighborService = CellNeighborService()
         // WHEN
-        val aliveNeighborsCount = cellNeighborService.getAliveNeighborsCount(grid)
+        val aliveNeighborsCount =
+            cellNeighborService.getAliveNeighborsCount(grid = grid, targetCellRowIndex = 1, targetCellColumnIndex = 1)
         // THEN
         aliveNeighborsCount shouldBe 1
     }
@@ -46,7 +47,8 @@ class CellNeighborServiceTest {
         )
         val cellNeighborService = CellNeighborService()
         // WHEN
-        val aliveNeighborsCount = cellNeighborService.getAliveNeighborsCount(grid)
+        val aliveNeighborsCount =
+            cellNeighborService.getAliveNeighborsCount(grid = grid, targetCellRowIndex = 1, targetCellColumnIndex = 1)
         // THEN
         aliveNeighborsCount shouldBe 2
     }
@@ -61,7 +63,8 @@ class CellNeighborServiceTest {
         )
         val cellNeighborService = CellNeighborService()
         // WHEN
-        val aliveNeighborsCount = cellNeighborService.getAliveNeighborsCount(grid)
+        val aliveNeighborsCount =
+            cellNeighborService.getAliveNeighborsCount(grid = grid, targetCellRowIndex = 1, targetCellColumnIndex = 1)
         // THEN
         aliveNeighborsCount shouldBe 3
     }
@@ -76,7 +79,8 @@ class CellNeighborServiceTest {
         )
         val cellNeighborService = CellNeighborService()
         // WHEN
-        val aliveNeighborsCount = cellNeighborService.getAliveNeighborsCount(grid)
+        val aliveNeighborsCount =
+            cellNeighborService.getAliveNeighborsCount(grid = grid, targetCellRowIndex = 1, targetCellColumnIndex = 1)
         // THEN
         aliveNeighborsCount shouldBe 4
     }
@@ -91,7 +95,8 @@ class CellNeighborServiceTest {
         )
         val cellNeighborService = CellNeighborService()
         // WHEN
-        val aliveNeighborsCount = cellNeighborService.getAliveNeighborsCount(grid)
+        val aliveNeighborsCount =
+            cellNeighborService.getAliveNeighborsCount(grid = grid, targetCellRowIndex = 1, targetCellColumnIndex = 1)
         // THEN
         aliveNeighborsCount shouldBe 5
     }
@@ -106,7 +111,8 @@ class CellNeighborServiceTest {
         )
         val cellNeighborService = CellNeighborService()
         // WHEN
-        val aliveNeighborsCount = cellNeighborService.getAliveNeighborsCount(grid)
+        val aliveNeighborsCount =
+            cellNeighborService.getAliveNeighborsCount(grid = grid, targetCellRowIndex = 1, targetCellColumnIndex = 1)
         // THEN
         aliveNeighborsCount shouldBe 6
     }
@@ -121,7 +127,8 @@ class CellNeighborServiceTest {
         )
         val cellNeighborService = CellNeighborService()
         // WHEN
-        val aliveNeighborsCount = cellNeighborService.getAliveNeighborsCount(grid)
+        val aliveNeighborsCount =
+            cellNeighborService.getAliveNeighborsCount(grid = grid, targetCellRowIndex = 1, targetCellColumnIndex = 1)
         // THEN
         aliveNeighborsCount shouldBe 7
     }
@@ -136,13 +143,13 @@ class CellNeighborServiceTest {
         )
         val cellNeighborService = CellNeighborService()
         // WHEN
-        val aliveNeighborsCount = cellNeighborService.getAliveNeighborsCount(grid)
+        val aliveNeighborsCount =
+            cellNeighborService.getAliveNeighborsCount(grid = grid, targetCellRowIndex = 1, targetCellColumnIndex = 1)
         // THEN
         aliveNeighborsCount shouldBe 8
     }
 
     @Test
-    @Disabled("irrelevant for the moment")
     fun `GIVEN a grid (3,3), an alive cell on (0,0), 0 alive neighbors WHEN getAliveNeighborsCount THEN should return 0`() {
         // GIVEN
         val grid: Array<Array<Cell>> = arrayOf(
@@ -152,7 +159,8 @@ class CellNeighborServiceTest {
         )
         val cellNeighborService = CellNeighborService()
         // WHEN
-        val aliveNeighborsCount = cellNeighborService.getAliveNeighborsCount(grid)
+        val aliveNeighborsCount =
+            cellNeighborService.getAliveNeighborsCount(grid = grid, targetCellRowIndex = 0, targetCellColumnIndex = 0)
         // THEN
         aliveNeighborsCount shouldBe 0
     }
