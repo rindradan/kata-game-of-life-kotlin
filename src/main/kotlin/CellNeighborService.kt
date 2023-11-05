@@ -1,12 +1,21 @@
 import CellStatus.ALIVE
 
 class CellNeighborService {
-    fun getAliveNeighborsCount(grid: Array<Array<Cell>>, targetCellRowIndex: Int = 1, targetCellColumnIndex: Int = 1): Int {
+    fun getAliveNeighborsCount(
+        grid: Array<Array<Cell>>,
+        targetCellRowIndex: Int = 1,
+        targetCellColumnIndex: Int = 1
+    ): Int {
         var count = 0
         for (currentCellRowIndex in grid.indices) {
             for (currentCellColumnIndex in grid[currentCellRowIndex].indices) {
                 if (
-                    !isSameCellPosition(currentCellRowIndex, currentCellColumnIndex, targetCellRowIndex, targetCellColumnIndex) &&
+                    !isSameCellPosition(
+                        currentCellRowIndex,
+                        currentCellColumnIndex,
+                        targetCellRowIndex,
+                        targetCellColumnIndex
+                    ) &&
                     grid[currentCellRowIndex][currentCellColumnIndex] == Cell(ALIVE)
                 ) {
                     count++
@@ -24,20 +33,23 @@ class CellNeighborService {
     ) = currentCellRowIndex == targetCellRowIndex && currentCellColumnIndex == targetCellColumnIndex
 
     fun getNeighborsCount(grid: Array<Array<Cell>>, cellRowIndex: Int, cellColumnIndex: Int): Int =
-        when {
-            cellRowIndex == 0 && cellColumnIndex == 0 -> getNeighbors(grid = grid, cellRowIndex = cellRowIndex, cellColumnIndex = cellColumnIndex).size
-            cellRowIndex == 0 && cellColumnIndex == 1 -> 5
-            cellRowIndex == 0 && cellColumnIndex == 2 -> 3
-            cellRowIndex == 1 && cellColumnIndex == 0 -> 5
-            cellRowIndex == 1 && cellColumnIndex == 1 -> 8
-            cellRowIndex == 1 && cellColumnIndex == 2 -> 5
-            cellRowIndex == 2 && cellColumnIndex == 0 -> 3
-            cellRowIndex == 2 && cellColumnIndex == 1 -> 5
-            cellRowIndex == 2 && cellColumnIndex == 2 -> 3
-            else -> 0
-        }
+        if (cellRowIndex in grid.indices && cellColumnIndex in grid[cellRowIndex].indices) {
+            getNeighbors(grid = grid, cellRowIndex = cellRowIndex, cellColumnIndex = cellColumnIndex).size
+        } else 0
 
-    private fun getNeighbors(grid: Array<Array<Cell>>, cellRowIndex: Int, cellColumnIndex: Int): Array<Cell> {
-        return arrayOf(grid[cellRowIndex+0][cellColumnIndex+1], grid[cellRowIndex+1][cellColumnIndex+0], grid[cellRowIndex+1][cellColumnIndex+1])
-    }
+    private fun getNeighbors(grid: Array<Array<Cell>>, cellRowIndex: Int, cellColumnIndex: Int): Array<Cell> = arrayOf(
+        getNeighbor(grid, cellRowIndex + (-1), cellColumnIndex + (-1)),
+        getNeighbor(grid, cellRowIndex + (-1), cellColumnIndex + 0),
+        getNeighbor(grid, cellRowIndex + (-1), cellColumnIndex + 1),
+        getNeighbor(grid, cellRowIndex + 0, cellColumnIndex + (-1)),
+        getNeighbor(grid, cellRowIndex + 0, cellColumnIndex + 1),
+        getNeighbor(grid, cellRowIndex + 1, cellColumnIndex + (-1)),
+        getNeighbor(grid, cellRowIndex + 1, cellColumnIndex + 0),
+        getNeighbor(grid, cellRowIndex + 1, cellColumnIndex + 1),
+    ).filterNotNull().toTypedArray()
+
+    private fun getNeighbor(grid: Array<Array<Cell>>, cellRowIndex: Int, cellColumnIndex: Int): Cell? =
+        if (cellRowIndex in grid.indices && cellColumnIndex in grid[cellRowIndex].indices) {
+            grid[cellRowIndex][cellColumnIndex]
+        } else null
 }
