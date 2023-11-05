@@ -8,9 +8,9 @@ class GameOfLifeTest {
     fun `a cell with no neighbors should be dead by solitude`() {
         // GIVEN
         val cell = Cell(ALIVE)
-        val game = GameOfLife(cell = cell, aliveNeighborsCount = 0)
+        val game = GameOfLife(initialGrid = emptyArray())
         // WHEN
-        val nextCell = game.nextGeneration()
+        val nextCell = game.nextGeneration(cell, 0)
         // THEN
         nextCell shouldBe Cell(DEAD)
     }
@@ -19,9 +19,9 @@ class GameOfLifeTest {
     fun `a cell with 1 alive neighbor should be dead by underpopulation`() {
         // GIVEN
         val cell = Cell(ALIVE)
-        val game = GameOfLife(cell = cell, aliveNeighborsCount = 1)
+        val game = GameOfLife(initialGrid = emptyArray())
         // WHEN
-        val nextCell = game.nextGeneration()
+        val nextCell = game.nextGeneration(cell, 1)
         // THEN
         nextCell shouldBe Cell(DEAD)
     }
@@ -30,9 +30,9 @@ class GameOfLifeTest {
     fun `a cell with 2 alive neighbors should be alive`() {
         // GIVEN
         val cell = Cell(ALIVE)
-        val game = GameOfLife(cell = cell, aliveNeighborsCount = 2)
+        val game = GameOfLife(initialGrid = emptyArray())
         // WHEN
-        val nextCell = game.nextGeneration()
+        val nextCell = game.nextGeneration(cell, 2)
         // THEN
         nextCell shouldBe Cell(ALIVE)
     }
@@ -41,9 +41,9 @@ class GameOfLifeTest {
     fun `a cell with 3 alive neighbors should be alive`() {
         // GIVEN
         val cell = Cell(ALIVE)
-        val game = GameOfLife(cell = cell, aliveNeighborsCount = 3)
+        val game = GameOfLife(initialGrid = emptyArray())
         // WHEN
-        val nextCell = game.nextGeneration()
+        val nextCell = game.nextGeneration(cell, 3)
         // THEN
         nextCell shouldBe Cell(ALIVE)
     }
@@ -52,9 +52,9 @@ class GameOfLifeTest {
     fun `a cell with 4 alive neighbors should be dead by overpopulation`() {
         // GIVEN
         val cell = Cell(ALIVE)
-        val game = GameOfLife(cell = cell, aliveNeighborsCount = 4)
+        val game = GameOfLife(initialGrid = emptyArray())
         // WHEN
-        val nextCell = game.nextGeneration()
+        val nextCell = game.nextGeneration(cell, 4)
         // THEN
         nextCell shouldBe Cell(DEAD)
     }
@@ -63,9 +63,9 @@ class GameOfLifeTest {
     fun `a cell with 5 alive neighbors should be dead by overpopulation`() {
         // GIVEN
         val cell = Cell(ALIVE)
-        val game = GameOfLife(cell = cell, aliveNeighborsCount = 5)
+        val game = GameOfLife(initialGrid = emptyArray())
         // WHEN
-        val nextCell = game.nextGeneration()
+        val nextCell = game.nextGeneration(cell, 5)
         // THEN
         nextCell shouldBe Cell(DEAD)
     }
@@ -74,9 +74,9 @@ class GameOfLifeTest {
     fun `a cell with 6 alive neighbors should be dead by overpopulation`() {
         // GIVEN
         val cell = Cell(ALIVE)
-        val game = GameOfLife(cell = cell, aliveNeighborsCount = 6)
+        val game = GameOfLife(initialGrid = emptyArray())
         // WHEN
-        val nextCell = game.nextGeneration()
+        val nextCell = game.nextGeneration(cell, 6)
         // THEN
         nextCell shouldBe Cell(DEAD)
     }
@@ -85,9 +85,9 @@ class GameOfLifeTest {
     fun `a cell with 7 alive neighbors should be dead by overpopulation`() {
         // GIVEN
         val cell = Cell(ALIVE)
-        val game = GameOfLife(cell = cell, aliveNeighborsCount = 7)
+        val game = GameOfLife(initialGrid = emptyArray())
         // WHEN
-        val nextCell = game.nextGeneration()
+        val nextCell = game.nextGeneration(cell, 7)
         // THEN
         nextCell shouldBe Cell(DEAD)
     }
@@ -96,9 +96,9 @@ class GameOfLifeTest {
     fun `a cell with 8 alive neighbors should be dead by overpopulation`() {
         // GIVEN
         val cell = Cell(ALIVE)
-        val game = GameOfLife(cell = cell, aliveNeighborsCount = 8)
+        val game = GameOfLife(initialGrid = emptyArray())
         // WHEN
-        val nextCell = game.nextGeneration()
+        val nextCell = game.nextGeneration(cell, 8)
         // THEN
         nextCell shouldBe Cell(DEAD)
     }
@@ -107,9 +107,9 @@ class GameOfLifeTest {
     fun `a dead cell with 3 alive neighbors should be alive`() {
         // GIVEN
         val cell = Cell(DEAD)
-        val game = GameOfLife(cell = cell, aliveNeighborsCount = 3)
+        val game = GameOfLife(initialGrid = emptyArray())
         // WHEN
-        val nextCell = game.nextGeneration()
+        val nextCell = game.nextGeneration(cell, 3)
         // THEN
         nextCell shouldBe Cell(ALIVE)
     }
@@ -148,6 +148,25 @@ class GameOfLifeTest {
         nextGrid shouldBe arrayOf(
             arrayOf(Cell(DEAD), Cell(DEAD), Cell(DEAD)),
             arrayOf(Cell(DEAD), Cell(DEAD), Cell(DEAD)),
+            arrayOf(Cell(DEAD), Cell(DEAD), Cell(DEAD)),
+        )
+    }
+
+    @Test
+    fun `on a grid (3,3), an alive cell on point (1,1) with 2 neighbors should be alive`() {
+        // GIVEN
+        val grid : Array<Array<Cell>> = arrayOf(
+            arrayOf(Cell(DEAD), Cell(ALIVE), Cell(DEAD)),
+            arrayOf(Cell(DEAD), Cell(ALIVE), Cell(DEAD)),
+            arrayOf(Cell(DEAD), Cell(ALIVE), Cell(DEAD)),
+        )
+        val game = GameOfLife(initialGrid = grid)
+        // WHEN
+        val nextGrid = game.generateNextGrid()
+        // THEN
+        nextGrid shouldBe arrayOf(
+            arrayOf(Cell(DEAD), Cell(DEAD), Cell(DEAD)),
+            arrayOf(Cell(DEAD), Cell(ALIVE), Cell(DEAD)),
             arrayOf(Cell(DEAD), Cell(DEAD), Cell(DEAD)),
         )
     }
