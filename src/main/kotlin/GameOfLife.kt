@@ -5,13 +5,6 @@ class GameOfLife(
     private val initialGrid: Array<Array<Cell>>,
     private val cellNeighborService: CellNeighborService = CellNeighborService()
 ) {
-    fun generateNextCell(cell: Cell, aliveNeighborsCount: Int): Cell =
-        when {
-            cell == Cell(ALIVE) && aliveNeighborsCount in (2..3) -> Cell(ALIVE)
-            cell == Cell(DEAD) && aliveNeighborsCount == 3 -> Cell(ALIVE)
-            else -> Cell(DEAD)
-        }
-
     fun generateNextGrid(): Array<Array<Cell>> {
         val cells = mutableListOf<List<Cell>>()
         for (rowIndex in initialGrid.indices) {
@@ -33,4 +26,11 @@ class GameOfLife(
         val cell = initialGrid[cellRowIndex][cellColumnIndex]
         return generateNextCell(cell = cell, aliveNeighborsCount = aliveNeighborsCount)
     }
+
+    private fun generateNextCell(cell: Cell, aliveNeighborsCount: Int): Cell =
+        when {
+            cell == Cell(ALIVE) && aliveNeighborsCount in (2..3) -> Cell(ALIVE)
+            cell == Cell(DEAD) && aliveNeighborsCount == 3 -> Cell(ALIVE)
+            else -> Cell(DEAD)
+        }
 }
