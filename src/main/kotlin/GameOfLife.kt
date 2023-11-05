@@ -13,9 +13,9 @@ class GameOfLife(
         }
 
     fun generateNextGrid(): Array<Array<Cell>> = arrayOf(
-        arrayOf(Cell(DEAD), generateNextCell(0, 1), Cell(DEAD)),
-        arrayOf(generateNextCell(1, 0), generateNextCell(1, 1), Cell(DEAD)),
-        arrayOf(Cell(DEAD), generateNextCell(2, 1), Cell(DEAD)),
+        arrayOf(generateNextCell(0, 0), generateNextCell(0, 1), generateNextCell(0, 2)),
+        arrayOf(generateNextCell(1, 0), generateNextCell(1, 1), generateNextCell(1, 2)),
+        arrayOf(generateNextCell(2, 0), generateNextCell(2, 1), generateNextCell(2, 2)),
     )
 
     private fun generateNextCell(cellRowIndex: Int, cellColumnIndex: Int): Cell {
