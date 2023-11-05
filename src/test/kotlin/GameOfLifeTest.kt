@@ -80,4 +80,15 @@ class GameOfLifeTest {
         // THEN
         nextCell shouldBe Cell(DEAD)
     }
+
+    @Test
+    fun `a cell with 7 alive neighbors should be dead by overpopulation`() {
+        // GIVEN
+        val cell = Cell(ALIVE)
+        val game = GameOfLife(cell = cell, aliveNeighborsCount = 7)
+        // WHEN
+        val nextCell = game.nextGeneration()
+        // THEN
+        nextCell shouldBe Cell(DEAD)
+    }
 }
