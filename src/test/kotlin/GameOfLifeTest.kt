@@ -25,4 +25,15 @@ class GameOfLifeTest {
         // THEN
         nextCell shouldBe Cell(DEAD)
     }
+
+    @Test
+    fun `a cell with 2 alive neighbors should be alive`() {
+        // GIVEN
+        val cell = Cell(ALIVE)
+        val game = GameOfLife(cell = cell, aliveNeighborsCount = 2)
+        // WHEN
+        val nextCell = game.nextGeneration()
+        // THEN
+        nextCell shouldBe Cell(ALIVE)
+    }
 }
