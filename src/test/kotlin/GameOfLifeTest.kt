@@ -1,7 +1,6 @@
 import CellStatus.ALIVE
 import CellStatus.DEAD
 import io.kotest.matchers.shouldBe
-import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 
 class GameOfLifeTest {
@@ -154,7 +153,6 @@ class GameOfLifeTest {
     }
 
     @Test
-    @Disabled("to do after getAliveNeighborsCount() is implemented successfully")
     fun `on a grid (3,3), an alive cell on point (1,1) with 2 neighbors should be alive`() {
         // GIVEN
         val grid: Array<Array<Cell>> = arrayOf(
@@ -174,7 +172,6 @@ class GameOfLifeTest {
     }
 
     @Test
-    @Disabled("to do after getAliveNeighborsCount() is implemented successfully")
     fun `on a grid (3,3), an alive cell on point (1,1) with 2 neighbors should be alive (another case)`() {
         // GIVEN
         val grid: Array<Array<Cell>> = arrayOf(
