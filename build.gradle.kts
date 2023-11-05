@@ -16,3 +16,7 @@ dependencies {
 kotlin {
     jvmToolchain(8)
 }
+
+tasks.named<Test>("test") {
+    useJUnitPlatform()
+}
