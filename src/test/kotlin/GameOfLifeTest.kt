@@ -170,23 +170,4 @@ class GameOfLifeTest {
             arrayOf(Cell(DEAD), Cell(DEAD), Cell(DEAD)),
         )
     }
-
-    @Test
-    fun `on a grid (3,3), an alive cell on point (1,1) with 2 neighbors should be alive (another case)`() {
-        // GIVEN
-        val grid: Array<Array<Cell>> = arrayOf(
-            arrayOf(Cell(ALIVE), Cell(DEAD), Cell(DEAD)),
-            arrayOf(Cell(DEAD), Cell(ALIVE), Cell(DEAD)),
-            arrayOf(Cell(DEAD), Cell(ALIVE), Cell(DEAD)),
-        )
-        val game = GameOfLife(initialGrid = grid)
-        // WHEN
-        val nextGrid = game.generateNextGrid()
-        // THEN
-        nextGrid shouldBe arrayOf(
-            arrayOf(Cell(DEAD), Cell(DEAD), Cell(DEAD)),
-            arrayOf(Cell(DEAD), Cell(ALIVE), Cell(DEAD)),
-            arrayOf(Cell(DEAD), Cell(DEAD), Cell(DEAD)),
-        )
-    }
 }
