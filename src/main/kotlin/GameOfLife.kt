@@ -10,6 +10,7 @@ class GameOfLife(private val cell: Cell, private val aliveNeighborsCount: Int) {
             cell.status == ALIVE && aliveNeighborsCount == 3 -> Cell(ALIVE)
             cell.status == ALIVE && aliveNeighborsCount == 4 -> Cell(DEAD)
             cell.status == ALIVE && aliveNeighborsCount == 5 -> Cell(DEAD)
+            cell.status == ALIVE && aliveNeighborsCount == 6 -> Cell(DEAD)
             else -> null
         }
 }
