@@ -156,4 +156,154 @@ class CellNeighborServiceTest {
         // THEN
         aliveNeighborsCount shouldBe 0
     }
+
+    @Test
+    fun `GIVEN a grid (3,3) WHEN getNeighborsCount from a cell on (-1,-1) THEN should return 0`() {
+        // GIVEN
+        val grid: Array<Array<Cell>> = arrayOf(
+            arrayOf(Cell(DEAD), Cell(DEAD), Cell(DEAD)),
+            arrayOf(Cell(DEAD), Cell(DEAD), Cell(DEAD)),
+            arrayOf(Cell(DEAD), Cell(DEAD), Cell(DEAD)),
+        )
+        val cellNeighborService = CellNeighborService()
+        // WHEN
+        val neighborsCount = cellNeighborService.getNeighborsCount(grid = grid, cellRowIndex = -1, cellColumnIndex = -1)
+        // THEN
+        neighborsCount shouldBe 0
+    }
+
+    @Test
+    fun `GIVEN a grid (3,3) WHEN getNeighborsCount from a cell on (0,0) THEN should return 3`() {
+        // GIVEN
+        val grid: Array<Array<Cell>> = arrayOf(
+            arrayOf(Cell(DEAD), Cell(DEAD), Cell(DEAD)),
+            arrayOf(Cell(DEAD), Cell(DEAD), Cell(DEAD)),
+            arrayOf(Cell(DEAD), Cell(DEAD), Cell(DEAD)),
+        )
+        val cellNeighborService = CellNeighborService()
+        // WHEN
+        val neighborsCount = cellNeighborService.getNeighborsCount(grid = grid, cellRowIndex = 0, cellColumnIndex = 0)
+        // THEN
+        neighborsCount shouldBe 3
+    }
+
+    @Test
+    fun `GIVEN a grid (3,3) WHEN getNeighborsCount from a cell on (0,1) THEN should return 5`() {
+        // GIVEN
+        val grid: Array<Array<Cell>> = arrayOf(
+            arrayOf(Cell(DEAD), Cell(DEAD), Cell(DEAD)),
+            arrayOf(Cell(DEAD), Cell(DEAD), Cell(DEAD)),
+            arrayOf(Cell(DEAD), Cell(DEAD), Cell(DEAD)),
+        )
+        val cellNeighborService = CellNeighborService()
+        // WHEN
+        val neighborsCount = cellNeighborService.getNeighborsCount(grid = grid, cellRowIndex = 0, cellColumnIndex = 1)
+        // THEN
+        neighborsCount shouldBe 5
+    }
+
+    @Test
+    fun `GIVEN a grid (3,3) WHEN getNeighborsCount from a cell on (0,2) THEN should return 3`() {
+        // GIVEN
+        val grid: Array<Array<Cell>> = arrayOf(
+            arrayOf(Cell(DEAD), Cell(DEAD), Cell(DEAD)),
+            arrayOf(Cell(DEAD), Cell(DEAD), Cell(DEAD)),
+            arrayOf(Cell(DEAD), Cell(DEAD), Cell(DEAD)),
+        )
+        val cellNeighborService = CellNeighborService()
+        // WHEN
+        val neighborsCount = cellNeighborService.getNeighborsCount(grid = grid, cellRowIndex = 0, cellColumnIndex = 2)
+        // THEN
+        neighborsCount shouldBe 3
+    }
+
+    @Test
+    fun `GIVEN a grid (3,3) WHEN getNeighborsCount from a cell on (1,0) THEN should return 5`() {
+        // GIVEN
+        val grid: Array<Array<Cell>> = arrayOf(
+            arrayOf(Cell(DEAD), Cell(DEAD), Cell(DEAD)),
+            arrayOf(Cell(DEAD), Cell(DEAD), Cell(DEAD)),
+            arrayOf(Cell(DEAD), Cell(DEAD), Cell(DEAD)),
+        )
+        val cellNeighborService = CellNeighborService()
+        // WHEN
+        val neighborsCount = cellNeighborService.getNeighborsCount(grid = grid, cellRowIndex = 1, cellColumnIndex = 0)
+        // THEN
+        neighborsCount shouldBe 5
+    }
+
+    @Test
+    fun `GIVEN a grid (3,3) WHEN getNeighborsCount from a cell on (1,1) THEN should return 8`() {
+        // GIVEN
+        val grid: Array<Array<Cell>> = arrayOf(
+            arrayOf(Cell(DEAD), Cell(DEAD), Cell(DEAD)),
+            arrayOf(Cell(DEAD), Cell(DEAD), Cell(DEAD)),
+            arrayOf(Cell(DEAD), Cell(DEAD), Cell(DEAD)),
+        )
+        val cellNeighborService = CellNeighborService()
+        // WHEN
+        val neighborsCount = cellNeighborService.getNeighborsCount(grid = grid, cellRowIndex = 1, cellColumnIndex = 1)
+        // THEN
+        neighborsCount shouldBe 8
+    }
+
+    @Test
+    fun `GIVEN a grid (3,3) WHEN getNeighborsCount from a cell on (1,2) THEN should return 5`() {
+        // GIVEN
+        val grid: Array<Array<Cell>> = arrayOf(
+            arrayOf(Cell(DEAD), Cell(DEAD), Cell(DEAD)),
+            arrayOf(Cell(DEAD), Cell(DEAD), Cell(DEAD)),
+            arrayOf(Cell(DEAD), Cell(DEAD), Cell(DEAD)),
+        )
+        val cellNeighborService = CellNeighborService()
+        // WHEN
+        val neighborsCount = cellNeighborService.getNeighborsCount(grid = grid, cellRowIndex = 1, cellColumnIndex = 2)
+        // THEN
+        neighborsCount shouldBe 5
+    }
+
+    @Test
+    fun `GIVEN a grid (3,3) WHEN getNeighborsCount from a cell on (2,0) THEN should return 3`() {
+        // GIVEN
+        val grid: Array<Array<Cell>> = arrayOf(
+            arrayOf(Cell(DEAD), Cell(DEAD), Cell(DEAD)),
+            arrayOf(Cell(DEAD), Cell(DEAD), Cell(DEAD)),
+            arrayOf(Cell(DEAD), Cell(DEAD), Cell(DEAD)),
+        )
+        val cellNeighborService = CellNeighborService()
+        // WHEN
+        val neighborsCount = cellNeighborService.getNeighborsCount(grid = grid, cellRowIndex = 2, cellColumnIndex = 0)
+        // THEN
+        neighborsCount shouldBe 3
+    }
+
+    @Test
+    fun `GIVEN a grid (3,3) WHEN getNeighborsCount from a cell on (2,1) THEN should return 5`() {
+        // GIVEN
+        val grid: Array<Array<Cell>> = arrayOf(
+            arrayOf(Cell(DEAD), Cell(DEAD), Cell(DEAD)),
+            arrayOf(Cell(DEAD), Cell(DEAD), Cell(DEAD)),
+            arrayOf(Cell(DEAD), Cell(DEAD), Cell(DEAD)),
+        )
+        val cellNeighborService = CellNeighborService()
+        // WHEN
+        val neighborsCount = cellNeighborService.getNeighborsCount(grid = grid, cellRowIndex = 2, cellColumnIndex = 1)
+        // THEN
+        neighborsCount shouldBe 5
+    }
+
+    @Test
+    fun `GIVEN a grid (3,3) WHEN getNeighborsCount from a cell on (2,2) THEN should return 3`() {
+        // GIVEN
+        val grid: Array<Array<Cell>> = arrayOf(
+            arrayOf(Cell(DEAD), Cell(DEAD), Cell(DEAD)),
+            arrayOf(Cell(DEAD), Cell(DEAD), Cell(DEAD)),
+            arrayOf(Cell(DEAD), Cell(DEAD), Cell(DEAD)),
+        )
+        val cellNeighborService = CellNeighborService()
+        // WHEN
+        val neighborsCount = cellNeighborService.getNeighborsCount(grid = grid, cellRowIndex = 2, cellColumnIndex = 2)
+        // THEN
+        neighborsCount shouldBe 3
+    }
 }

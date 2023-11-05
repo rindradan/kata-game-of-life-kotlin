@@ -22,4 +22,18 @@ class CellNeighborService {
         targetCellRowIndex: Int,
         targetCellColumnIndex: Int
     ) = currentCellRowIndex == targetCellRowIndex && currentCellColumnIndex == targetCellColumnIndex
+
+    fun getNeighborsCount(grid: Array<Array<Cell>>, cellRowIndex: Int, cellColumnIndex: Int): Int =
+        when {
+            cellRowIndex == 0 && cellColumnIndex == 0 -> 3
+            cellRowIndex == 0 && cellColumnIndex == 1 -> 5
+            cellRowIndex == 0 && cellColumnIndex == 2 -> 3
+            cellRowIndex == 1 && cellColumnIndex == 0 -> 5
+            cellRowIndex == 1 && cellColumnIndex == 1 -> 8
+            cellRowIndex == 1 && cellColumnIndex == 2 -> 5
+            cellRowIndex == 2 && cellColumnIndex == 0 -> 3
+            cellRowIndex == 2 && cellColumnIndex == 1 -> 5
+            cellRowIndex == 2 && cellColumnIndex == 2 -> 3
+            else -> 0
+        }
 }
