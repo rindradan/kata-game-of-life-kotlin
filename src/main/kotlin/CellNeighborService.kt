@@ -1,15 +1,25 @@
 import CellStatus.ALIVE
 
 class CellNeighborService {
-    fun getAliveNeighborsCount(grid: Array<Array<Cell>>): Int {
+    fun getAliveNeighborsCount(grid: Array<Array<Cell>>, targetCellRowIndex: Int = 1, targetCellColumnIndex: Int = 1): Int {
         var count = 0
-        for (rowIndex in grid.indices) {
-            for (columnIndex in grid[rowIndex].indices) {
-                if (!isCellInTheMiddle(rowIndex, columnIndex) && grid[rowIndex][columnIndex] == Cell(ALIVE)) count++
+        for (currentCellRowIndex in grid.indices) {
+            for (currentCellColumnIndex in grid[currentCellRowIndex].indices) {
+                if (
+                    !isSameCellPosition(currentCellRowIndex, currentCellColumnIndex, targetCellRowIndex, targetCellColumnIndex) &&
+                    grid[currentCellRowIndex][currentCellColumnIndex] == Cell(ALIVE)
+                ) {
+                    count++
+                }
             }
         }
         return count
     }
 
-    private fun isCellInTheMiddle(rowIndex: Int, columnIndex: Int): Boolean = rowIndex == 1 && columnIndex == 1
+    private fun isSameCellPosition(
+        currentCellRowIndex: Int,
+        currentCellColumnIndex: Int,
+        targetCellRowIndex: Int,
+        targetCellColumnIndex: Int
+    ) = currentCellRowIndex == targetCellRowIndex && currentCellColumnIndex == targetCellColumnIndex
 }

@@ -1,6 +1,7 @@
 import CellStatus.ALIVE
 import CellStatus.DEAD
 import io.kotest.matchers.shouldBe
+import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 
 class CellNeighborServiceTest {
@@ -138,5 +139,21 @@ class CellNeighborServiceTest {
         val aliveNeighborsCount = cellNeighborService.getAliveNeighborsCount(grid)
         // THEN
         aliveNeighborsCount shouldBe 8
+    }
+
+    @Test
+    @Disabled("irrelevant for the moment")
+    fun `GIVEN a grid (3,3), an alive cell on (0,0), 0 alive neighbors WHEN getAliveNeighborsCount THEN should return 0`() {
+        // GIVEN
+        val grid: Array<Array<Cell>> = arrayOf(
+            arrayOf(Cell(ALIVE), Cell(DEAD), Cell(DEAD)),
+            arrayOf(Cell(DEAD), Cell(DEAD), Cell(DEAD)),
+            arrayOf(Cell(DEAD), Cell(DEAD), Cell(DEAD)),
+        )
+        val cellNeighborService = CellNeighborService()
+        // WHEN
+        val aliveNeighborsCount = cellNeighborService.getAliveNeighborsCount(grid)
+        // THEN
+        aliveNeighborsCount shouldBe 0
     }
 }
