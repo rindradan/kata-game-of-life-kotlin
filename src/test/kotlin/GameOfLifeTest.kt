@@ -167,13 +167,12 @@ class GameOfLifeTest {
         // THEN
         nextGrid shouldBe arrayOf(
             arrayOf(Cell(DEAD), Cell(DEAD), Cell(DEAD)),
-            arrayOf(Cell(DEAD), Cell(ALIVE), Cell(DEAD)),
+            arrayOf(Cell(ALIVE), Cell(ALIVE), Cell(DEAD)),
             arrayOf(Cell(DEAD), Cell(DEAD), Cell(DEAD)),
         )
     }
 
     @Test
-    @Disabled("irrelevant for the moment")
     fun `on a grid (3,3), an alive cell on point (1,1) with 3 neighbors should be alive`() {
         // GIVEN
         val grid: Array<Array<Cell>> = arrayOf(
