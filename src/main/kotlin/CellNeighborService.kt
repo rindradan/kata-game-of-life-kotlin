@@ -25,7 +25,7 @@ class CellNeighborService {
 
     fun getNeighborsCount(grid: Array<Array<Cell>>, cellRowIndex: Int, cellColumnIndex: Int): Int =
         when {
-            cellRowIndex == 0 && cellColumnIndex == 0 -> 3
+            cellRowIndex == 0 && cellColumnIndex == 0 -> getNeighbors(grid = grid, cellRowIndex = cellRowIndex, cellColumnIndex = cellColumnIndex).size
             cellRowIndex == 0 && cellColumnIndex == 1 -> 5
             cellRowIndex == 0 && cellColumnIndex == 2 -> 3
             cellRowIndex == 1 && cellColumnIndex == 0 -> 5
@@ -36,4 +36,8 @@ class CellNeighborService {
             cellRowIndex == 2 && cellColumnIndex == 2 -> 3
             else -> 0
         }
+
+    private fun getNeighbors(grid: Array<Array<Cell>>, cellRowIndex: Int, cellColumnIndex: Int): Array<Cell> {
+        return arrayOf(grid[cellRowIndex+0][cellColumnIndex+1], grid[cellRowIndex+1][cellColumnIndex+0], grid[cellRowIndex+1][cellColumnIndex+1])
+    }
 }
